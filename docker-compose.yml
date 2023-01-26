@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  app:
+    container_name: app_polyzone_front
+    image: node:lts
+    user: "1000:1000"
+    working_dir: /var/www/html
+#    command: bash -c "npm install && HOST=${HOST} PORT=80 npm run serve"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      default:
+        ipv4_address: ${NETWORK_DEFAULT}.2
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_DEFAULT}.0/16
+          gateway: ${NETWORK_DEFAULT}.1

@@ -1,0 +1,31 @@
+.skeleton-loader {
+  overflow: hidden;
+
+  &::after {
+    animation: mymove 1s infinite;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  }
+}
+
+@keyframes mymove {
+  0% {
+    left: 0;
+    right: 0;
+  }
+  50% {
+    left: 200%;
+    right: -200%;
+  }
+  100% {
+    left: 0;
+    right: 0;
+  }
+}

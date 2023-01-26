@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+#      - name: ENV
+#        run: touch ./.env.production && echo "${{ secrets.ENV }}" > ./.env.production
+
+#      - name: Test
+#        run: npm run test:unit
+
+      - name: Build && Deploy
+        run: |
+          touch ./.env.production && echo "${{ secrets.ENV }}" > ./.env.production
+          npm install
+          npm run build
+          mkdir -p ./.ssh
+          touch ./.ssh/id_rsa
+          echo "${{ secrets.REMOTE_SSH_PRIVATE_KEY }}" > ./.ssh/id_rsa
+          chmod 600 ./.ssh/id_rsa
+          ls -l ./dist/*
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.REMOTE_PORT }} -i ./.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} rm -rf ${{ secrets.REMOTE_TARGET }}/*
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.REMOTE_PORT }} -i ./.ssh/id_rsa -r dist/. ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}

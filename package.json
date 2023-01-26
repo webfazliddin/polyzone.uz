@@ -1,0 +1,46 @@
+{
+  "name": "polyzone",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "js-file-download": "^0.4.12",
+    "moment": "^2.29.4",
+    "numeral": "^2.0.6",
+    "register-service-worker": "^1.7.2",
+    "swiper": "^5.4.5",
+    "vee-validate": "^3.4.14",
+    "vue": "^2.6.14",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-cookies": "^1.8.2",
+    "vue-cropperjs": "^4.2.0",
+    "vue-router": "^3.5.1",
+    "vue-yandex-metrika": "^1.8.3",
+    "vuetify": "^2.6.0",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-unit-mocha": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^1.1.3",
+    "axios": "^0.25",
+    "chai": "^4.2.0",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.1",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify-loader": "^1.7.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
